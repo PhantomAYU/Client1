@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Photographer Portfolio</title>
+<style>
+    /* Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        overflow-x: hidden;
+    }
+
+    header {
+        height: 100vh;
+        background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(10,10,10,1) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    header h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        animation: fadeInDown 1s ease forwards;
+    }
+
+    header p {
+        font-size: 1.3rem;
+        margin-top: 10px;
+        max-width: 600px;
+        animation: fadeInUp 1.2s ease forwards;
+    }
+
+    .neon-line {
+        width: 80px;
+        height: 4px;
+        background: cyan;
+        margin: 20px auto;
+        border-radius: 5px;
+        box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+        animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glowPulse {
+        from { box-shadow: 0 0 5px cyan, 0 0 15px cyan; }
+        to { box-shadow: 0 0 15px cyan, 0 0 35px cyan; }
+    }
+
+    /* Gallery */
+    .gallery {
+        padding: 50px 5%;
+        background: #0e0e0e;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 2px solid cyan;
+        box-shadow: 0 0 10px rgba(0,255,255,0.3);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0,255,255,0.8);
+    }
+
+    /* About Section */
+    .about {
+        padding: 60px 10%;
+        text-align: center;
+        background: #0a0a0a;
+    }
+
+    .about h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .about p {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+        background: #050505;
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9rem;
+        border-top: 2px solid cyan;
+    }
+
+    /* Scroll Animation */
+    .hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Johnathan Blake</h1>
+    <div class="neon-line"></div>
+    <p>Capturing the soul of every moment with precision, passion, and artistry.</p>
+</header>
+
+<section class="about hidden">
+    <h2>About Me</h2>
+    <p>With over two decades in professional photography, I have captured timeless portraits, awe-inspiring landscapes, and dynamic moments for clients worldwide. My style blends technical mastery with artistic vision, creating images that speak beyond words.</p>
+</section>
+
+<section class="gallery hidden">
+    <img src="https://picsum.photos/id/1015/600/400" alt="Portfolio Image">
+    <img src="https://picsum.photos/id/1021/600/400" alt="Portfolio Image">
+    <img src="https://picsum.photos/id/1025/600/400" alt="Portfolio Image">
+    <img src="https://picsum.photos/id/1031/600/400" alt="Portfolio Image">
+    <img src="https://picsum.photos/id/1035/600/400" alt="Portfolio Image">
+    <img src="https://picsum.photos/id/1041/600/400" alt="Portfolio Image">
+</section>
+
+<footer>
+    &copy; 2025 Johnathan Blake Photography | All Rights Reserved
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>
